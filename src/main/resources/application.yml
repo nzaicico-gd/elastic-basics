@@ -1,0 +1,9 @@
+spring:
+  application.name: elastic-basics
+  elasticsearch:
+    uris: ${ELASTICSEARCH_URI:http://localhost:9200}
+
+index:
+  alias: article_index_nzaicico
+  settings: classpath:elastic-basics/articles/index_settings.json
+  bulk-data: classpath:elastic-basics/articles/bulk_data.json

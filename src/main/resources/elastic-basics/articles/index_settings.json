@@ -1,0 +1,70 @@
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0,
+    "similarity": {
+      "default": {
+        "type": "boolean"
+      }
+    },
+    "analysis": {
+      "analyzer": {
+        "text_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "asciifolding"
+          ]
+        }
+      },
+      "normalizer": {
+        "keyword-normalizer": {
+          "filter": [
+            "lowercase",
+            "asciifolding"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "id": {
+        "type": "keyword"
+      },
+      "title": {
+        "type": "text",
+        "analyzer": "text_analyzer"
+      },
+      "description": {
+        "type": "text",
+        "analyzer": "text_analyzer"
+      },
+      "categories": {
+        "type": "keyword"
+      },
+      "availableTime": {
+        "type": "date"
+      },
+      "author": {
+        "type": "keyword",
+        "normalizer": "keyword-normalizer",
+        "fields": {
+          "raw": {
+            "type": "keyword"
+          }
+        }
+      },
+      "genres": {
+        "type": "keyword",
+        "normalizer": "keyword-normalizer",
+        "fields": {
+          "raw": {
+            "type": "keyword"
+          }
+        }
+      }
+    }
+  }
+}
